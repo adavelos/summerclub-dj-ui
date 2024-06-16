@@ -1,0 +1,57 @@
+<app-layout>
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+  </mat-form-field>
+  
+  <mat-table [dataSource]="dataSource" matSort>
+
+  <!-- Artists Column -->
+  <ng-container matColumnDef="artists">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Artists </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.artists}} </mat-cell>
+  </ng-container>
+
+  <!-- Track Column -->
+  <ng-container matColumnDef="track">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Track </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.track}} </mat-cell>
+  </ng-container>
+
+  <!-- Album Column -->
+  <ng-container matColumnDef="album">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Album </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.album}} </mat-cell>
+  </ng-container>
+
+  <!-- Year Column -->
+  <ng-container matColumnDef="year">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Year </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.year}} </mat-cell>
+  </ng-container>
+  
+    <!-- Spotify Track Column -->
+    <ng-container matColumnDef="spotifyTrack">
+      <mat-header-cell *matHeaderCellDef> Spotify Track </mat-header-cell>
+      <mat-cell *matCellDef="let element"> Link </mat-cell>
+    </ng-container>
+  
+    <!-- Music Features Column -->
+    <ng-container matColumnDef="features">
+      <mat-header-cell *matHeaderCellDef> Music Features </mat-header-cell>
+      <mat-cell *matCellDef="let element"> Link </mat-cell>
+    </ng-container>
+  
+    <!-- Tags Column -->
+    <ng-container matColumnDef="tags">
+      <mat-header-cell *matHeaderCellDef> Tags </mat-header-cell>
+      <mat-cell *matCellDef="let element"> Link </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>  
+  
+</app-layout>
